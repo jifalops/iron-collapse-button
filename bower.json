@@ -2,6 +2,9 @@
   "name": "iron-collapse-button",
   "description": "An &lt;iron-collapse&gt; container that works similarly to &lt;paper-menu-button&gt;. There is a trigger section and a collapsible section.",
   "main": "iron-collapse-button.html",
+  "keywords": [
+    "web-components"
+  ],
   "dependencies": {
     "polymer": "Polymer/polymer#^1.4.0",
     "iron-collapse": "^1.2.1"
