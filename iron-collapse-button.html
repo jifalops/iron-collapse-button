@@ -15,17 +15,17 @@ An iron-collapse container that works similarly to paper-menu-button. There is a
         display: block;
       }
       #trigger {
-        @apply(--layout-horizontal);
-        @apply(--layout-center);
+        @apply --layout-horizontal;
+        @apply --layout-center;
       }
     </style>
 
     <div id="trigger" on-tap="toggle">
-      <content select=".collapse-trigger"></content>
+      <slot name="collapse-trigger"></slot>
       <iron-icon icon="[[_getIcon(opened, expandIcon, collapseIcon)]]" hidden$="[[noIcons]]"></iron-icon>
     </div>
     <iron-collapse id="collapse" horizontal$="[[horizontal]]" no-animation$="[[noAnimation]]" opened="[[opened]]">
-      <content select=".collapse-content"></content>
+      <slot name="collapse-content"></slot>
     </iron-collapse>
   </template>
 

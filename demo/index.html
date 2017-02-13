@@ -13,7 +13,7 @@
 
     <style is="custom-style" include="demo-pages-shared-styles">
       .flex {
-        @apply(--layout-flex);
+        @apply --layout-flex;
       }
     </style>
   </head>
@@ -24,18 +24,18 @@
       <demo-snippet>
         <template>
           <iron-collapse-button>
-            <div class="collapse-trigger">
+            <div slot="collapse-trigger">
               Trigger
             </div>
-            <div class="collapse-content">
+            <div slot="collapse-content">
               Content
             </div>
           </iron-collapse-button>
           <iron-collapse-button>
-            <div class="collapse-trigger flex">
+            <div slot="collapse-trigger" class="flex">
               Flexbox trigger
             </div>
-            <div class="collapse-content">
+            <div slot="collapse-content">
               Content
             </div>
           </iron-collapse-button>
