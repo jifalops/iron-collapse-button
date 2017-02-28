@@ -1,0 +1,85 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-collapse/iron-collapse.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<!--
+`iron-collapse-button`
+An iron-collapse container that works similarly to paper-menu-button. There is a trigger section and a collapsible section.
+
+@demo demo/index.html
+-->
+<dom-module id="iron-collapse-button">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      #trigger {
+        @apply --layout-horizontal;
+        @apply --layout-center;
+      }
+    </style>
+
+    <div id="trigger" on-tap="toggle">
+      <slot name="collapse-trigger"></slot>
+      <iron-icon icon="[[_getIcon(opened, expandIcon, collapseIcon)]]" hidden$="[[noIcons]]"></iron-icon>
+    </div>
+    <iron-collapse id="collapse" horizontal$="[[horizontal]]" no-animation$="[[noAnimation]]" opened="[[opened]]">
+      <slot name="collapse-content"></slot>
+    </iron-collapse>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'iron-collapse-button',
+
+      properties: {
+        horizontal: {
+          type: Boolean,
+          value: false,
+          reflectToAttribute: true
+        },
+        noAnimation: {
+          type: Boolean,
+          value: false,
+          reflectToAttribute: true
+        },
+        opened: {
+          type: Boolean,
+          value: false,
+          reflectToAttribute: true,
+          notify: true
+        },
+        expandIcon: {
+          type: String,
+          value: 'expand-more'
+        },
+        collapseIcon: {
+          type: String,
+          value: 'expand-less'
+        },
+        noIcons: {
+          type: Boolean,
+          value: false,
+          reflectToAttribute: true
+        },
+      },
+
+      hide: function () {
+        this.opened = false;
+      },
+
+      show: function () {
+        this.opened = true;
+      },
+
+      toggle: function () {
+        this.opened = !this.opened;
+      },
+
+      _getIcon: function(opened, expandIcon, collapseIcon) {
+        return opened ? collapseIcon : expandIcon;
+      }
+    });
+  </script>
+</dom-module>

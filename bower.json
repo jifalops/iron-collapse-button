@@ -1,0 +1,23 @@
+{
+  "name": "iron-collapse-button",
+  "description": "An &lt;iron-collapse&gt; container that works similarly to &lt;paper-menu-button&gt;. There is a trigger section and a collapsible section.",
+  "main": "iron-collapse-button.html",
+  "keywords": [
+    "web-components",
+    "iron-collapse-button",
+    "iron",
+    "collapse",
+    "button"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.7.0",
+    "iron-collapse": "^1.2.1"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
+    "web-component-tester": "^4.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+  },
+  "license": "MIT"
+}
