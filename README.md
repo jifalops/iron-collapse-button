@@ -31,7 +31,7 @@ Just define an element that has `slot="collapse-trigger"` and another with
   <div slot="collapse-trigger">Trigger</div>
   <div slot="collapse-content">Content</div>
 </iron-collapse-button>
-<iron-collapse-button>
+<iron-collapse-button opened>
   <div slot="collapse-trigger" class="flex">Flexbox trigger</div>
   <div slot="collapse-content">Content</div>
 </iron-collapse-button>
