@@ -6,7 +6,7 @@ An &lt;iron-collapse&gt; container that works similarly to &lt;paper-menu-button
 ## Installation
 
 ```
-bower install --save from-to-now
+bower install --save iron-collapse-button
 ```
 
 ## Usage
