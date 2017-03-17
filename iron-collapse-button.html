@@ -1,7 +1,9 @@
-<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../polymer/lib/mixins/gesture-event-listeners.html">
 <link rel="import" href="../iron-collapse/iron-collapse.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../shadycss/apply-shim.html">
 <!--
 `iron-collapse-button`
 An iron-collapse container that works similarly to paper-menu-button. There is a trigger section and a collapsible section.
@@ -30,10 +32,12 @@ An iron-collapse container that works similarly to paper-menu-button. There is a
   </template>
 
   <script>
-    Polymer({
-      is: 'iron-collapse-button',
+  class IronCollapseButton extends Polymer.GestureEventListeners(Polymer.Element) {
 
-      properties: {
+    static get is() { return 'iron-collapse-button'; }
+
+    static get properties() {
+      return {
         horizontal: {
           type: Boolean,
           value: false,
@@ -63,23 +67,32 @@ An iron-collapse container that works similarly to paper-menu-button. There is a
           value: false,
           reflectToAttribute: true
         },
-      },
+      };
+    }
 
-      hide: function () {
-        this.opened = false;
-      },
+    static get observers() {
+      return [
 
-      show: function () {
-        this.opened = true;
-      },
+      ];
+    }
+    hide() {
+      this.opened = false;
+    }
 
-      toggle: function () {
-        this.opened = !this.opened;
-      },
+    show() {
+      this.opened = true;
+    }
 
-      _getIcon: function(opened, expandIcon, collapseIcon) {
-        return opened ? collapseIcon : expandIcon;
-      }
-    });
+    toggle() {
+      console.log('toggling')
+      this.opened = !this.opened;
+    }
+
+    _getIcon(opened, expandIcon, collapseIcon) {
+      return opened ? collapseIcon : expandIcon;
+    }
+  }
+
+  window.customElements.define(IronCollapseButton.is, IronCollapseButton);
   </script>
 </dom-module>
