@@ -1,6 +1,6 @@
 {
   "name": "iron-collapse-button",
-  "description": "An iron-collapse container that works similarly to &lt;paper-menu-button&gt;. There is a trigger section and a collapsible section.",
+  "description": "An iron-collapse with a trigger section and optional expand/collapse icons.",
   "authors": ["Jacob Phillips (https://github.com/jifalops)"],
   "license": "MIT",
   "main": "iron-collapse-button.html",
