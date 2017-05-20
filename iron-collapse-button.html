@@ -1,12 +1,13 @@
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../polymer/lib/mixins/gesture-event-listeners.html">
 <link rel="import" href="../iron-collapse/iron-collapse.html">
-<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../shadycss/apply-shim.html">
+<link rel="import" href="iron-collapse-button-icons.html">
 <!--
 `iron-collapse-button`
-An iron-collapse container that works similarly to paper-menu-button. There is a trigger section and a collapsible section.
+An iron-collapse with a trigger section and optional expand/collapse icons.
 
 @demo demo/index.html
 -->
@@ -24,75 +25,73 @@ An iron-collapse container that works similarly to paper-menu-button. There is a
 
     <div id="trigger" on-tap="toggle">
       <slot name="collapse-trigger"></slot>
-      <iron-icon icon="[[_getIcon(opened, expandIcon, collapseIcon)]]" hidden$="[[noIcons]]"></iron-icon>
+      <iron-icon icon="[[_toggle(opened, collapseIcon, expandIcon)]]" hidden$="[[noIcons]]"></iron-icon>
     </div>
-    <iron-collapse id="collapse" horizontal$="[[horizontal]]" no-animation$="[[noAnimation]]" opened="[[opened]]">
+    <iron-collapse id="collapse" horizontal="[[horizontal]]" no-animation="[[noAnimation]]" opened="[[opened]]">
       <slot name="collapse-content"></slot>
     </iron-collapse>
   </template>
 
   <script>
-  class IronCollapseButton extends Polymer.GestureEventListeners(Polymer.Element) {
+    class IronCollapseButton extends Polymer.GestureEventListeners(Polymer.Element) {
+      static get is() { return 'iron-collapse-button'; }
+      static get properties() {
+        return {
+          /**
+           * Corresponds to the iron-collapse's horizontal property.
+           */
+          horizontal: {
+            type: Boolean,
+            value: false
+          },
+          /**
+           * Corresponds to the iron-collapse's noAnimation property.
+           */
+          noAnimation: {
+            type: Boolean,
+            value: false
+          },
+          /**
+           * Whether currently expanded.
+           */
+          opened: {
+            type: Boolean,
+            value: false,
+            notify: true
+          },
+          /**
+           * The icon when collapsed.
+           */
+          expandIcon: {
+            type: String,
+            value: 'iron-collapse-button-icons:expand-more'
+          },
+          /**
+           * The icon when expanded.
+           */
+          collapseIcon: {
+            type: String,
+            value: 'iron-collapse-button-icons:expand-less'
+          },
+          /**
+           * Whether to hide the expand/collapse icon.
+           */
+          noIcons: {
+            type: Boolean,
+            value: false
+          },
+        };
+      }
 
-    static get is() { return 'iron-collapse-button'; }
-
-    static get properties() {
-      return {
-        horizontal: {
-          type: Boolean,
-          value: false,
-          reflectToAttribute: true
-        },
-        noAnimation: {
-          type: Boolean,
-          value: false,
-          reflectToAttribute: true
-        },
-        opened: {
-          type: Boolean,
-          value: false,
-          reflectToAttribute: true,
-          notify: true
-        },
-        expandIcon: {
-          type: String,
-          value: 'expand-more'
-        },
-        collapseIcon: {
-          type: String,
-          value: 'expand-less'
-        },
-        noIcons: {
-          type: Boolean,
-          value: false,
-          reflectToAttribute: true
-        },
-      };
+      /** @depricated Use `open()`. */
+      show() { this.open(); }
+      /** @depricated Use `close()`. */
+      hide() { this.close(); }
+      open() { this.opened = true; }
+      close() { this.opened = false; }
+      toggle() { this.opened = !this.opened; }
+      _toggle(cond, t, f) { return cond ? t : f; }
     }
-
-    static get observers() {
-      return [
-
-      ];
-    }
-    hide() {
-      this.opened = false;
-    }
-
-    show() {
-      this.opened = true;
-    }
-
-    toggle() {
-      console.log('toggling')
-      this.opened = !this.opened;
-    }
-
-    _getIcon(opened, expandIcon, collapseIcon) {
-      return opened ? collapseIcon : expandIcon;
-    }
-  }
-
-  window.customElements.define(IronCollapseButton.is, IronCollapseButton);
+    customElements.define(IronCollapseButton.is, IronCollapseButton);
   </script>
 </dom-module>

@@ -1,7 +1,7 @@
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/jifalops/iron-collapse-button)
 
 # iron-collapse-button
-An &lt;iron-collapse&gt; container that works similarly to &lt;paper-menu-button&gt;. There is a trigger section and a collapsible section.
+An iron-collapse with a trigger section and optional expand/collapse icons.
 
 ## Installation
 
@@ -20,7 +20,17 @@ Just define an element that has `slot="collapse-trigger"` and another with
   <template>
     <script src="../webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="iron-collapse-button.html">
-    <next-code-block></next-code-block>   
+    <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+        .flex {
+          @apply --layout-flex;
+        }
+        iron-collapse-button {
+          margin: 8px 0;
+        }
+      </style>
+    </custom-style>
+    <next-code-block></next-code-block>
   </template>
 </custom-element-demo>
 ```
