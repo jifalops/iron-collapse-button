@@ -1,9 +1,7 @@
-<link rel="import" href="../polymer/polymer-element.html">
-<link rel="import" href="../polymer/lib/mixins/gesture-event-listeners.html">
+<link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../iron-collapse/iron-collapse.html">
 <link rel="import" href="../iron-icon/iron-icon.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="../shadycss/apply-shim.html">
 <link rel="import" href="iron-collapse-button-icons.html">
 <!--
 
@@ -38,66 +36,63 @@
      * @polymer
      * @demo demo/index.html
      */
-    class IronCollapseButton extends Polymer.GestureEventListeners(Polymer.Element) {
-      static get is() { return 'iron-collapse-button'; }
-      static get properties() {
-        return {
-          /**
-           * @deprecated
-           * Corresponds to the iron-collapse's horizontal property.
-           */
-          horizontal: {
-            type: Boolean,
-            value: false
-          },
-          /**
-           * Corresponds to the iron-collapse's noAnimation property.
-           */
-          noAnimation: {
-            type: Boolean,
-            value: false
-          },
-          /**
-           * Whether currently expanded.
-           */
-          opened: {
-            type: Boolean,
-            value: false,
-            notify: true
-          },
-          /**
-           * The icon when collapsed.
-           */
-          expandIcon: {
-            type: String,
-            value: 'iron-collapse-button-icons:expand-more'
-          },
-          /**
-           * The icon when expanded.
-           */
-          collapseIcon: {
-            type: String,
-            value: 'iron-collapse-button-icons:expand-less'
-          },
-          /**
-           * Whether to hide the expand/collapse icon.
-           */
-          noIcons: {
-            type: Boolean,
-            value: false
-          },
-        };
-      }
+    Polymer ({
+      is: 'iron-collapse-button',
+      properties: {
+        /**
+          * @deprecated
+          * Corresponds to the iron-collapse's horizontal property.
+          */
+        horizontal: {
+          type: Boolean,
+          value: false
+        },
+        /**
+          * Corresponds to the iron-collapse's noAnimation property.
+          */
+        noAnimation: {
+          type: Boolean,
+          value: false
+        },
+        /**
+          * Whether currently expanded.
+          */
+        opened: {
+          type: Boolean,
+          value: false,
+          notify: true
+        },
+        /**
+          * The icon when collapsed.
+          */
+        expandIcon: {
+          type: String,
+          value: 'iron-collapse-button-icons:expand-more'
+        },
+        /**
+          * The icon when expanded.
+          */
+        collapseIcon: {
+          type: String,
+          value: 'iron-collapse-button-icons:expand-less'
+        },
+        /**
+          * Whether to hide the expand/collapse icon.
+          */
+        noIcons: {
+          type: Boolean,
+          value: false
+        },
+      },
 
       /** @depricated Use `open()`. */
-      show() { this.open(); }
+      show: function() { this.open(); },
       /** @depricated Use `close()`. */
-      hide() { this.close(); }
-      open() { this.opened = true; }
-      close() { this.opened = false; }
-      toggle() { this.opened = !this.opened; }
-      _toggle(cond, t, f) { return cond ? t : f; }
-    }
-    customElements.define(IronCollapseButton.is, IronCollapseButton);
+      hide: function() { this.close(); },
+      open: function() { this.opened = true; },
+      close: function() { this.opened = false; },
+      toggle: function() { this.opened = !this.opened; },
+      _toggle: function(cond, t, f) { return cond ? t : f; }
+    });
   </script>
 </dom-module>
