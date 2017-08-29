@@ -1,9 +1,9 @@
 {
   "name": "iron-collapse-button",
   "description": "An iron-collapse with a trigger section and optional expand/collapse icons.",
-  "authors": ["Jacob Phillips (https://github.com/jifalops)"],
-  "license": "MIT",
   "main": "iron-collapse-button.html",
+  "authors": ["Jacob Phillips (https://github.com/jifalops) <jifalops@gmail.com>"],
+  "license": "MIT",
   "keywords": [
     "web-components",
     "iron-collapse-button",

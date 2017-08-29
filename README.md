@@ -6,12 +6,12 @@ An iron-collapse with a trigger section and optional expand/collapse icons.
 ## Installation
 
 ```
-bower install --save iron-collapse-button
+bower i -S iron-collapse-button      # Polymer 2.0 class based
+bower i -S iron-collapse-button#^0.4 # Polymer 2.0 hybrid (1.x compatible)
 ```
 
 ## Usage
-Just define an element that has `slot="collapse-trigger"` and another with
-`slot="collapse-content"` and it takes care of the rest.
+Show/hide collapsible content by filling the trigger and content slots.
 
 ## Demo
 <!--
@@ -21,12 +21,15 @@ Just define an element that has `slot="collapse-trigger"` and another with
     <script src="../webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="iron-collapse-button.html">
     <custom-style>
-      <style is="custom-style" include="demo-pages-shared-styles">
+      <style include="demo-pages-shared-styles">
         .flex {
           @apply --layout-flex;
         }
         iron-collapse-button {
           margin: 8px 0;
+        }
+        ul {
+          margin-top: 0;
         }
       </style>
     </custom-style>
@@ -39,11 +42,21 @@ Just define an element that has `slot="collapse-trigger"` and another with
 ```html
 <iron-collapse-button>
   <div slot="collapse-trigger">Trigger</div>
-  <div slot="collapse-content">Content</div>
+  <div slot="collapse-content">
+    <ul>
+      <li>Do this</li>
+      <li>or that</li>
+    </ul>
+  </div>
 </iron-collapse-button>
 <iron-collapse-button opened>
   <div slot="collapse-trigger" class="flex">Flexbox trigger</div>
-  <div slot="collapse-content">Content</div>
+  <div slot="collapse-content">
+    <ul>
+      <li>or this</li>
+      <li>not that</li>
+    </ul>
+  </div>
 </iron-collapse-button>
 ```
 
@@ -52,7 +65,6 @@ Full demo:
 | [github](https://jifalops.github.io/iron-collapse-button/components/iron-collapse-button/demo/).
 
 API: [webcomponents.org](https://www.webcomponents.org/element/jifalops/iron-collapse-button/iron-collapse-button)
-| [github](https://jifalops.github.io/iron-collapse-button).
 
 ## Contributing
 

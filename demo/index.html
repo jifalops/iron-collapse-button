@@ -19,6 +19,9 @@
         iron-collapse-button {
           margin: 8px 0;
         }
+        ul {
+          margin-top: 0;
+        }
       </style>
     </custom-style>
   </head>
@@ -30,11 +33,22 @@
         <template>
           <iron-collapse-button>
             <div slot="collapse-trigger">Trigger</div>
-            <div slot="collapse-content">Content</div>
+            <div slot="collapse-content">
+              <ul>
+                <li>Do this</li>
+                <li>or that</li>
+              </ul>
+            </div>
           </iron-collapse-button>
+
           <iron-collapse-button opened>
             <div slot="collapse-trigger" class="flex">Flexbox trigger</div>
-            <div slot="collapse-content">Content</div>
+            <div slot="collapse-content">
+              <ul>
+                <li>or this</li>
+                <li>not that</li>
+              </ul>
+            </div>
           </iron-collapse-button>
         </template>
       </demo-snippet>

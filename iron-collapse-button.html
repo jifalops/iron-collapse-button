@@ -6,10 +6,7 @@
 <link rel="import" href="../shadycss/apply-shim.html">
 <link rel="import" href="iron-collapse-button-icons.html">
 <!--
-`iron-collapse-button`
-An iron-collapse with a trigger section and optional expand/collapse icons.
 
-@demo demo/index.html
 -->
 <dom-module id="iron-collapse-button">
   <template strip-whitespace>
@@ -33,11 +30,20 @@ An iron-collapse with a trigger section and optional expand/collapse icons.
   </template>
 
   <script>
+    /**
+     * `iron-collapse-button`
+     * An iron-collapse with a trigger section and optional expand/collapse icons.
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
     class IronCollapseButton extends Polymer.GestureEventListeners(Polymer.Element) {
       static get is() { return 'iron-collapse-button'; }
       static get properties() {
         return {
           /**
+           * @deprecated
            * Corresponds to the iron-collapse's horizontal property.
            */
           horizontal: {
